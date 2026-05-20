@@ -88,12 +88,12 @@
 \renewcommand\cftsecpagefont{\normalsize}
 
 % LIST OF TABLES
-\addto\captionsamerican{\renewcommand{\listtablename}{LIST OF TABLES}}
+\addto\captionsamerican{\renewcommand{\listtablename}{List of Tables}}
 \renewcommand{\cftlottitlefont}{\large\bfseries\hfill}
 \renewcommand{\cftafterlottitle}{\hfill}
 \renewcommand{\cftbeforelottitleskip}{-21 pt} % Key value is -21 pt
 \renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}
-\renewcommand{\cfttabpresnum}{TABLE }
+\renewcommand{\cfttabpresnum}{Table }
 \newlength{\mylent}   % a "scratch" length
 \settowidth{\mylent}{\cfttabpresnum} % extra space
 \addtolength{\cfttabnumwidth}{\mylent} % add the extra space
@@ -142,9 +142,6 @@
   \begingroup
      \singlespace
       \@maketitle
-%      \pagenumbering{roman}
-      \pagenumbering{arabic} % this command will overwrite the command in \newcommand \maketitle
-  \endgroup
   \setcounter{footnote}{1}% title page number 1
   \global\let\maketitle\relax
   \global\let\@maketitle\relax
@@ -222,7 +219,7 @@
 \newcommand{\@maketitle}{%
   \begin{center}%
 %    \normalsize{\doublespacing\MakeUppercase{\@title}%
-     \normalsize{\doublespacing{\@title}%
+     \normalsize{\singlespacing{\@title}%
     \singlespace%     
     \vskip 1em%
 %     {by}%   
@@ -344,6 +341,12 @@
 \newcommand{\dedication}[1]{%
     \expandafter\gdef\csname dedication@\endcsname{#1}}
 \newcommand{\makededication}{%
+ \titleformat{\chapter}[hang]{\normalsize\center}{\thechapter}{0 pt}{}%
+   \titlespacing*{\chapter}{0pt}{-33 pt}{6 pt} % Key value is -33 pt
+   \chapter*{Dedication}%
+   \addcontentsline{toc}{chapter}{Dedication} % This is to include this section in the Table of Contents}
+     \setlength{\parskip}{10 pt} % Same as Word file
+  \setlength{\parindent}{15pt} %
    {\csname dedication@\endcsname}%
 }
 
